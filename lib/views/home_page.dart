@@ -32,9 +32,9 @@ class HomePage extends StatelessWidget {
             height: 50,
             color: Colors.amber,
             child: Row(
-             
+             mainAxisAlignment: MainAxisAlignment.center,
             )),
-            
+
           Expanded(
             child: Obx(() => MasonryGridView.count(
                   itemCount: productController.productList.length,
