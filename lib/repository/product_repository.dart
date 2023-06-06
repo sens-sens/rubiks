@@ -6,7 +6,7 @@ final productRepositoryProvider = Provider<ProductRepository>((_)=>ProductReposi
 
 class ProductRepository {
 
-  final String _ip = '192.168.161.207';
+  final String _ip = 'ip_address';
   final String _port = '3000';
   final _client = http.Client();
 
