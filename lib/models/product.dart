@@ -5,25 +5,38 @@ List<Product> productFromJson(String str) => List<Product>.from(json.decode(str)
 String productToJson(List<Product> data) => json.encode(List<dynamic>.from(data.map((x) => x.toJson())));
 
 class Product {
+    final int id;
+    final String productName;
+    final String description;
+    final String productType;
+    final int price;
+    final List<String> images;
+
+
     Product({
-        required this.productId,
+        required this.id,
         required this.productName,
         required this.price,
+        required this.productType,
+        required this.description,
+        required this.images,
     });
 
-    int productId;
-    String productName;
-    int price;
-
     factory Product.fromJson(Map<String, dynamic> json) => Product(
-        productId: json["ProductId"],
-        productName: json["ProductName"],
-        price: json["Price"],
+        id: json["id"],
+        productName: json["product_name"],
+        description: json["description"],
+        price: json["price"],
+        productType: json["product_type"],
+        images: List<String>.from(json["images"].map((x) => x)),
     );
 
     Map<String, dynamic> toJson() => {
-        "ProductId": productId,
-        "ProductName": productName,
-        "Price": price,
+        "id": id,
+        "product_name": productName,
+        "description":description,
+        "product_type":productType,
+        "price": price,
+        "images": List<dynamic>.from(images.map((x) => x)),
     };
 }

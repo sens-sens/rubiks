@@ -1,21 +1,15 @@
-
-
-import 'package:flutter/services.dart';
-import 'package:google_fonts/google_fonts.dart';
-
-
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter/material.dart';
-import 'package:rubiks/views/home_page.dart';
+import 'package:rubiks/constants/app_strings.dart';
+import 'package:rubiks/constants/app_theme.dart';
+import 'package:rubiks/views/pages/home/home_page.dart';
 
 void main() {
-    WidgetsFlutterBinding.ensureInitialized();
- 
-  SystemChrome.setSystemUIOverlayStyle(SystemUiOverlayStyle.light.copyWith(
-    systemNavigationBarColor: Colors.white60,
-    
-      statusBarColor: Colors.transparent, // transparent status bar
-  ));
-  runApp(const MyApp());
+  runApp(
+    const ProviderScope(
+      child: MyApp(),
+    ),
+  );
 }
 
 class MyApp extends StatelessWidget {
@@ -24,14 +18,9 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      debugShowCheckedModeBanner: false,
-      title: 'Flutter Demo',
-      theme: ThemeData(
-        textTheme : GoogleFonts.ralewayTextTheme(),
-        primarySwatch: Colors.blue,
-      ),
-      home: HomePage(),
+      title: AppStrings.appName,
+      theme: AppTheme.theme,
+      home: const HomePage(),
     );
   }
 }
-
